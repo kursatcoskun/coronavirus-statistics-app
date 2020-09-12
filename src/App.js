@@ -1,12 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import './App.css';
-import GlobalPage from "./containers/globalPage";
+import "./App.css";
+import LayoutContent from "./containers/layoutContent";
 
 function App() {
-    return (
-        <GlobalPage></GlobalPage>
-    );
+  return <LayoutContent />;
 }
 
 export default App;

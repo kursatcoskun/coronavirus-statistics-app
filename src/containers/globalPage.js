@@ -1,62 +1,41 @@
-import { Card, Col, Divider, Layout, PageHeader, Row } from "antd";
+import { Col, Divider, PageHeader, Row } from "antd";
 
 import React, { useEffect } from "react";
 import * as statisticsActions from "../redux/actions/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import NumberFormat from "react-number-format";
-
-const { Content } = Layout;
+import GlobalCard from "../components/globalCard";
 
 const GlobalPage = (props) => {
   useEffect(() => {
     props.actions.getGlobalCoronaVirusStatistics();
-  }, []);
+  }, [props.actions]);
 
   return (
-    <Layout style={{ padding: "0 24px 24px" }}>
-      {props.loading ? "LOADING" : ""}
-      <Content
-        className="site-layout-background"
-        style={{
-          padding: 24,
-          margin: 0,
-          height: "100vh",
-        }}
-      >
-        <PageHeader title="Global Corona Virus Statistics" />
-        <Divider />
-        <Row>
-          <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Card title="CASES" bordered={false}>
-              <NumberFormat
-                value={props.globalStatistics?.cases}
-                displayType={"text"}
-                thousandSeparator={true}
-              />
-            </Card>
-          </Col>
-          <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Card title="DEATHS" bordered={false}>
-              <NumberFormat
-                value={props.globalStatistics?.deaths}
-                displayType={"text"}
-                thousandSeparator={true}
-              />
-            </Card>
-          </Col>
-          <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            <Card title="RECOVERED" bordered={false}>
-              <NumberFormat
-                value={props.globalStatistics?.recovered}
-                displayType={"text"}
-                thousandSeparator={true}
-              />
-            </Card>
-          </Col>
-        </Row>
-      </Content>
-    </Layout>
+    <div>
+      <PageHeader title="Global Corona Virus Statistics" />
+      <Divider />
+      <Row>
+        <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+          <GlobalCard
+            title="CASES"
+            statisticsValue={props.globalStatistics?.cases}
+          />
+        </Col>
+        <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+          <GlobalCard
+            title="DEATHS"
+            statisticsValue={props.globalStatistics?.deaths}
+          />
+        </Col>
+        <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+          <GlobalCard
+            title="RECOVERED"
+            statisticsValue={props.globalStatistics?.recovered}
+          />
+        </Col>
+      </Row>
+    </div>
   );
 };
 
