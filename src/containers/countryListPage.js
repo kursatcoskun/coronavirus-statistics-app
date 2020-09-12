@@ -26,25 +26,25 @@ const CountryListPage = (props) => {
     {
       title: "Today Cases",
       dataIndex: "todayCases",
-      sorter: (a, b) => a.todayCases.length - b.todayCases.length,
+      sorter: (a, b) => a.todayCases - b.todayCases,
       sortDirections: ["descend", "ascend"],
     },
     {
       title: "Deaths",
       dataIndex: "deaths",
-      sorter: (a, b) => a.deaths.length - b.deaths.length,
+      sorter: (a, b) => a.deaths - b.deaths,
       sortDirections: ["descend", "ascend"],
     },
     {
       title: "Today Deaths",
       dataIndex: "todayDeaths",
-      sorter: (a, b) => a.todayDeaths.length - b.todayDeaths.length,
+      sorter: (a, b) => a.todayDeaths - b.todayDeaths,
       sortDirections: ["descend", "ascend"],
     },
     {
       title: "Total Tests",
       dataIndex: "totalTests",
-      sorter: (a, b) => a.totalTests.length - b.totalTests.length,
+      sorter: (a, b) => a.totalTests - b.totalTests,
       sortDirections: ["descend", "ascend"],
     },
   ];
